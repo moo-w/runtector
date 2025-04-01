@@ -22,10 +22,10 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.js"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -33,7 +33,11 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nr test:all",
+    "test:all": "nr test:bun && nr test:deno && nr test:vitest",
+    "test:vitest": "vitest --run",
+    "test:bun": "bun ./test/bun.ts",
+    "test:deno": "deno ./test/deno.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -44,10 +48,14 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
+    "@types/node": "^22.13.14",
     "bumpp": "^10.1.0",
     "eslint": "^9.23.0",
+    "happy-dom": "^17.4.4",
+    "jsdom": "^26.0.0",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

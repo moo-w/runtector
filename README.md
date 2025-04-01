@@ -8,6 +8,81 @@
 
 JavaScript runtime detector
 
+## Installation
+
+```bash
+npm install runtector
+```
+
+## Usage
+
+```javascript
+import {
+  getCurRuntime,
+  isBrowser,
+  isBun,
+  isDeno,
+  isHappyDOM,
+  isJSDOM,
+  isNode,
+  isWebWorker,
+} from 'runtector'
+```
+
+## API
+
+- ### `isBrowser()`
+
+    `true` if the current environment is a browser. If the environment is `jsdom` or `happy-dom` it will return `false`.
+
+- ### `isNode()`
+
+    `true` if the current environment is Node.js.
+
+- ### `isWebWorker()`
+
+    `true` if the current environment is a Web Worker.
+
+- ### `isDeno()`
+
+    `true` if the current environment is Deno.
+
+- ### `isBun()`
+
+    `true` if the current environment is Bun.
+
+- ### `isJSDOM()`
+
+    `true` if the current environment is JSDOM.
+
+- ### `isHappyDOM()`
+
+    `true` if the current environment is HappyDOM.
+
+- ### `getCurRuntime()`
+
+    Example:
+
+    ```javascript
+    // Node.js environment
+
+    import { getCurRuntime } from 'runtector'
+
+    console.log(getCurRuntime())
+    /**
+     * ===>
+     * {
+     *    isBrowser: false,
+     *    isNode: true,
+     *    isWebWorker: false,
+     *    isDeno: false,
+     *    isBun: false,
+     *    isJSDOM: false,
+     *    isHappyDOM: false
+     *  }
+     */
+    ```
+
 ## License
 
 [MIT](./LICENSE) License © [MOOZON WEI](https://github.com/moo-w)
